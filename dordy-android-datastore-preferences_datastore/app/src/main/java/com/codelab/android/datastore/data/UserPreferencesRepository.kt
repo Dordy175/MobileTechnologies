@@ -97,18 +97,18 @@ class UserPreferencesRepository private constructor(context: Context) {
         }
     }
 
-    // Keep the sort order as a stream of changes
-    private val _sortOrderFlow = MutableStateFlow(sortOrder)
-    val sortOrderFlow: StateFlow<SortOrder> = _sortOrderFlow
+//    // Keep the sort order as a stream of changes
+//    private val _sortOrderFlow = MutableStateFlow(sortOrder)
+//    val sortOrderFlow: StateFlow<SortOrder> = _sortOrderFlow
 
     /**
      * Get the sort order. By default, sort order is None.
      */
-    private val sortOrder: SortOrder
-        get() {
-            val order = sharedPreferences.getString(SORT_ORDER_KEY, SortOrder.NONE.name)
-            return SortOrder.valueOf(order ?: SortOrder.NONE.name)
-        }
+//    private val sortOrder: SortOrder
+//        get() {
+//            val order = sharedPreferences.getString(SORT_ORDER_KEY, SortOrder.NONE.name)
+//            return SortOrder.valueOf(order ?: SortOrder.NONE.name)
+//        }
 
     suspend fun enableSortByDeadline(enable: Boolean) {
         // edit handles data transactionally, ensuring that if the sort is updated at the same
@@ -164,11 +164,11 @@ class UserPreferencesRepository private constructor(context: Context) {
         }
     }
 
-    private fun updateSortOrder(sortOrder: SortOrder) {
+ /*   private fun updateSortOrder(sortOrder: SortOrder) {
         sharedPreferences.edit {
             putString(SORT_ORDER_KEY, sortOrder.name)
         }
-    }
+    }*/
 
     companion object {
         @Volatile
