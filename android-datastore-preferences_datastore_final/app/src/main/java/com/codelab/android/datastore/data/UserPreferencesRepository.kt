@@ -32,6 +32,8 @@ import java.io.IOException
 
 private const val USER_PREFERENCES_NAME = "user_preferences"
 
+
+
 enum class SortOrder {
     NONE,
     BY_DEADLINE,
@@ -43,7 +45,6 @@ data class UserPreferences(
     val showCompleted: Boolean,
     val sortOrder: SortOrder
 )
-
 /**
  * Class that handles saving and retrieving user preferences
  */
