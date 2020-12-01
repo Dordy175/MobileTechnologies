@@ -68,16 +68,21 @@ class TasksActivity : AppCompatActivity() {
     }
 
 
-    private fun addOneToCounter(viewModel: TasksViewModel){
 
+    private fun addOneToCounter(viewModel: TasksViewModel){
+    
 
         // co pouzit misto onCheckedChange, pro tuhle situaci?
-
-
         var tmp: Int = binding.etCtr.text.toString().toInt()
-        tmp++
+        if(tmp == 0){
+            tmp = 1
+            viewModel.showCounter(tmp)
+        }else{
+            tmp += 1
+            viewModel.showCounter(tmp)
+        }
 
-        viewModel.showCounter(tmp)
+
         binding.etCtr.text = tmp.toString()
        // binding.etCtr.text = viewModel.showCounter(tmp).toString()
 

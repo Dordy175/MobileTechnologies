@@ -63,9 +63,6 @@ class UserPreferencesRepository private constructor(context: Context) {
     }
 
 
-    /**
-     * Saving the sort order to DataStore
-     */
 
     /**
      * Creating the DataStore
