@@ -90,7 +90,7 @@ class TasksViewModel(
         }
     }
 
-    fun updateCounter(ctr:  Int) {
+    fun showCounter(ctr:  Int) {
         viewModelScope.launch {
             userPreferencesRepository.updateCounter(ctr)
         }

@@ -18,13 +18,16 @@ package com.codelab.android.datastore.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.codelab.android.datastore.UserPreferences.SortOrder
+import com.codelab.android.datastore.UserPreferences
 import com.codelab.android.datastore.data.TasksRepository
 import com.codelab.android.datastore.data.UserPreferencesRepository
 import com.codelab.android.datastore.databinding.ActivityTasksBinding
+
 
 class TasksActivity : AppCompatActivity() {
 
@@ -39,6 +42,8 @@ class TasksActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+
         viewModel = ViewModelProvider(
             this,
             TasksViewModelFactory(TasksRepository, UserPreferencesRepository.getInstance(this))
@@ -47,13 +52,39 @@ class TasksActivity : AppCompatActivity() {
         setupRecyclerView()
         setupFilterListeners(viewModel)
         setupSort()
+        addOneToCounter(viewModel)
+
+       var ctrValue: Int = binding.etCtr.text.toString().toInt()
+
+
 
         viewModel.tasksUiModel.observe(owner = this) { tasksUiModel ->
             adapter.submitList(tasksUiModel.tasks)
             updateSort(tasksUiModel.sortOrder)
             binding.showCompletedSwitch.isChecked = tasksUiModel.showCompleted
+          //  binding.etCtr.text = tasksUiModel.counter
+
         }
     }
+
+
+    private fun addOneToCounter(viewModel: TasksViewModel){
+
+
+        // co pouzit misto onCheckedChange, pro tuhle situaci?
+
+
+        var tmp: Int = binding.etCtr.text.toString().toInt()
+        tmp++
+
+        viewModel.showCounter(tmp)
+        binding.etCtr.text = tmp.toString()
+       // binding.etCtr.text = viewModel.showCounter(tmp).toString()
+
+
+
+    }
+
 
     private fun setupFilterListeners(viewModel: TasksViewModel) {
         binding.showCompletedSwitch.setOnCheckedChangeListener { _, checked ->
@@ -78,10 +109,13 @@ class TasksActivity : AppCompatActivity() {
         }
     }
 
+
     private fun updateSort(sortOrder: SortOrder) {
         binding.sortDeadline.isChecked =
             sortOrder == SortOrder.BY_DEADLINE || sortOrder == SortOrder.BY_DEADLINE_AND_PRIORITY
         binding.sortPriority.isChecked =
             sortOrder == SortOrder.BY_PRIORITY || sortOrder == SortOrder.BY_DEADLINE_AND_PRIORITY
     }
+
+
 }

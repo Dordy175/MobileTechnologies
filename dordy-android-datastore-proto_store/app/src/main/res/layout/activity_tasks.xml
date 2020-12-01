@@ -66,12 +66,13 @@
             android:id="@+id/show_completed_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
         android:background="?attr/colorSurface"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/row_item_margin_horizontal"
@@ -88,8 +89,9 @@
             app:tint="?attr/colorOnSurface" />
 
         <com.google.android.material.chip.ChipGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="369dp"
+            android:layout_height="32dp"
+            android:clickable="false"
             android:paddingHorizontal="@dimen/row_item_margin_horizontal"
             app:singleLine="true">
 
@@ -108,6 +110,13 @@
                 android:checkable="true"
                 android:text="@string/deadline"
                 app:chipBackgroundColor="?attr/colorSecondary" />
+
+            <TextView
+                android:id="@+id/et_Ctr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
         </com.google.android.material.chip.ChipGroup>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
