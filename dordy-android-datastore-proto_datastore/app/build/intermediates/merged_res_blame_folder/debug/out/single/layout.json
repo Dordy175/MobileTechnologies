@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Ing\\MobilniTechnologie\\taskListApp\\taskListApp\\dordy-android-datastore-proto_datastore\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\task_view_item.xml",
+        "source": "D:\\Ing\\MobilniTechnologie\\taskListApp\\taskListApp\\dordy-android-datastore-proto_datastore\\app\\src\\main\\res\\layout\\task_view_item.xml"
+    },
+    {
+        "merged": "D:\\Ing\\MobilniTechnologie\\taskListApp\\taskListApp\\dordy-android-datastore-proto_datastore\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_tasks.xml",
+        "source": "D:\\Ing\\MobilniTechnologie\\taskListApp\\taskListApp\\dordy-android-datastore-proto_datastore\\app\\src\\main\\res\\layout\\activity_tasks.xml"
+    }
+]
