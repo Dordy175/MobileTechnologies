@@ -21,36 +21,61 @@ import android.util.Log
 import androidx.core.content.edit
 import androidx.datastore.DataStore
 import androidx.datastore.createDataStore
+import androidx.datastore.migrations.SharedPreferencesMigration
+import androidx.datastore.migrations.SharedPreferencesView
 import com.codelab.android.datastore.UserPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import java.io.IOException
+import com.codelab.android.datastore.UserPreferences.SortOrder
 
 private const val USER_PREFERENCES_NAME = "user_preferences"
 private const val SORT_ORDER_KEY = "sort_order"
 
-enum class SortOrder {
-    NONE,
-    BY_DEADLINE,
-    BY_PRIORITY,
-    BY_DEADLINE_AND_PRIORITY
-}
+
 
 /**
  * Class that handles saving and retrieving user preferences
  */
 class UserPreferencesRepository private constructor(context: Context) {
 
+
+    /**
+     * Migrating from SharedPreferences
+     */
+    private val sharedPrefsMigration = SharedPreferencesMigration(
+        context,
+        USER_PREFERENCES_NAME
+    ) { sharedPrefs: SharedPreferencesView, currentData: UserPreferences ->
+        // Define the mapping from SharedPreferences to UserPreferences
+        if (currentData.sortOrder == SortOrder.UNSPECIFIED) {
+            currentData.toBuilder().setSortOrder(
+                SortOrder.valueOf(
+                    sharedPrefs.getString(
+                        SORT_ORDER_KEY,SortOrder.NONE.name)!!
+                )
+            ).build()
+        } else {
+            currentData
+        }
+    }
+
+
+    /**
+     * Saving the sort order to DataStore
+     */
+
     /**
      * Creating the DataStore
      */
 
-    private val dataStore: DataStore<UserPreferences> =
-        context.createDataStore(
-            fileName = "user_prefs.pb",
-            serializer = UserPreferencesSerializer)
+    private val dataStore: DataStore<UserPreferences> = context.createDataStore(
+        fileName = "user_prefs.pb",
+        serializer = UserPreferencesSerializer,
+        migrations = listOf(sharedPrefsMigration)
+    )
 
     /**
      * Reading data from Proto DataStore
@@ -97,24 +122,27 @@ class UserPreferencesRepository private constructor(context: Context) {
             return SortOrder.valueOf(order ?: SortOrder.NONE.name)
         }
 
-    fun enableSortByDeadline(enable: Boolean) {
-        val currentOrder = sortOrderFlow.value
-        val newSortOrder =
-            if (enable) {
-                if (currentOrder == SortOrder.BY_PRIORITY) {
-                    SortOrder.BY_DEADLINE_AND_PRIORITY
+    suspend fun enableSortByDeadline(enable: Boolean) {
+        // updateData handles data transactionally, ensuring that if the sort is updated at the same
+        // time from another thread, we won't have conflicts
+        dataStore.updateData { preferences ->
+            val currentOrder = preferences.sortOrder
+            val newSortOrder =
+                if (enable) {
+                    if (currentOrder == SortOrder.BY_PRIORITY) {
+                        SortOrder.BY_DEADLINE_AND_PRIORITY
+                    } else {
+                        SortOrder.BY_DEADLINE
+                    }
                 } else {
-                    SortOrder.BY_DEADLINE
+                    if (currentOrder == SortOrder.BY_DEADLINE_AND_PRIORITY) {
+                        SortOrder.BY_PRIORITY
+                    } else {
+                        SortOrder.NONE
+                    }
                 }
-            } else {
-                if (currentOrder == SortOrder.BY_DEADLINE_AND_PRIORITY) {
-                    SortOrder.BY_PRIORITY
-                } else {
-                    SortOrder.NONE
-                }
-            }
-        updateSortOrder(newSortOrder)
-        _sortOrderFlow.value = newSortOrder
+            preferences.toBuilder().setSortOrder(newSortOrder).build()
+        }
     }
 
     fun enableSortByPriority(enable: Boolean) {
@@ -155,4 +183,10 @@ class UserPreferencesRepository private constructor(context: Context) {
             }
         }
     }
+
+
+
+
+
+
 }

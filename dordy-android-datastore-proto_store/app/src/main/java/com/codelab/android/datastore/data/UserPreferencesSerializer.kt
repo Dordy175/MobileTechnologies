@@ -6,6 +6,7 @@ import com.codelab.android.datastore.UserPreferences
 import com.google.protobuf.InvalidProtocolBufferException
 import java.io.InputStream
 import java.io.OutputStream
+import com.codelab.android.datastore.UserPreferences.SortOrder
 
 object UserPreferencesSerializer : Serializer<UserPreferences> {
     override fun readFrom(input: InputStream): UserPreferences {
