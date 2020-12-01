@@ -105,22 +105,12 @@ class UserPreferencesRepository private constructor(context: Context) {
         }
     }
 
-
-    private val sharedPreferences =
-        context.applicationContext.getSharedPreferences(USER_PREFERENCES_NAME, Context.MODE_PRIVATE)
-
-    // Keep the sort order as a stream of changes
-    private val _sortOrderFlow = MutableStateFlow(sortOrder)
-    val sortOrderFlow: StateFlow<SortOrder> = _sortOrderFlow
-
-    /**
-     * Get the sort order. By default, sort order is None.
-     */
-    private val sortOrder: SortOrder
-        get() {
-            val order = sharedPreferences.getString(SORT_ORDER_KEY, SortOrder.NONE.name)
-            return SortOrder.valueOf(order ?: SortOrder.NONE.name)
+    suspend fun updateCounter(counter: Int) {
+        dataStore.updateData { preferences ->
+            preferences.toBuilder().setCounter(counter).build()
         }
+    }
+
 
     suspend fun enableSortByDeadline(enable: Boolean) {
         // updateData handles data transactionally, ensuring that if the sort is updated at the same
@@ -145,31 +135,31 @@ class UserPreferencesRepository private constructor(context: Context) {
         }
     }
 
-    fun enableSortByPriority(enable: Boolean) {
-        val currentOrder = sortOrderFlow.value
-        val newSortOrder =
-            if (enable) {
-                if (currentOrder == SortOrder.BY_DEADLINE) {
-                    SortOrder.BY_DEADLINE_AND_PRIORITY
+    suspend fun enableSortByPriority(enable: Boolean) {
+        // updateData handles data transactionally, ensuring that if the sort is updated at the same
+        // time from another thread, we won't have conflicts
+        dataStore.updateData { currentPreferences ->
+            val currentOrder = currentPreferences.sortOrder
+            val newSortOrder =
+                if (enable) {
+                    if (currentOrder == SortOrder.BY_DEADLINE) {
+                        SortOrder.BY_DEADLINE_AND_PRIORITY
+                    } else {
+                        SortOrder.BY_PRIORITY
+                    }
                 } else {
-                    SortOrder.BY_PRIORITY
+                    if (currentOrder == SortOrder.BY_DEADLINE_AND_PRIORITY) {
+                        SortOrder.BY_DEADLINE
+                    } else {
+                        SortOrder.NONE
+                    }
                 }
-            } else {
-                if (currentOrder == SortOrder.BY_DEADLINE_AND_PRIORITY) {
-                    SortOrder.BY_DEADLINE
-                } else {
-                    SortOrder.NONE
-                }
-            }
-        updateSortOrder(newSortOrder)
-        _sortOrderFlow.value = newSortOrder
-    }
-
-    private fun updateSortOrder(sortOrder: SortOrder) {
-        sharedPreferences.edit {
-            putString(SORT_ORDER_KEY, sortOrder.name)
+            currentPreferences.toBuilder().setSortOrder(newSortOrder).build()
         }
     }
+
+
+
 
     companion object {
         @Volatile
