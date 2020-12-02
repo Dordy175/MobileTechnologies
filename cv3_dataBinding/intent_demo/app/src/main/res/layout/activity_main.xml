@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/ptNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@android:string/emptyPhoneNumber"
+        android:inputType="textPersonName|phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.612" />
+
+    <Button
+            android:id="@+id/btnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/btnCall"
+            app:layout_constraintStart_toStartOf="@+id/ptNumber"
+            app:layout_constraintTop_toBottomOf="@+id/ptNumber" />
+
+    <Button
+        android:id="@+id/btnMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Map"
+        app:layout_constraintEnd_toEndOf="@+id/ptNumber"
+        app:layout_constraintTop_toTopOf="@+id/btnCall" />
+
+    <Button
+        android:id="@+id/btnWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Open web"
+        app:layout_constraintStart_toStartOf="@+id/btnCall"
+        app:layout_constraintTop_toBottomOf="@+id/btnCall" />
+
+    <Button
+        android:id="@+id/btnEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="event"
+        app:layout_constraintEnd_toEndOf="@+id/btnMap"
+        app:layout_constraintTop_toTopOf="@+id/btnWeb" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btnEvent,btnWeb,btnMap,btnCall" />
+
+    <EditText
+        android:id="@+id/ptAdress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="@string/adressHint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ptNumber"
+        app:layout_constraintStart_toStartOf="@+id/ptNumber" />
+
+    <EditText
+        android:id="@+id/ptWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Web to Open [smth.com]"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ptAdress"
+        app:layout_constraintStart_toStartOf="@+id/ptAdress" />
+
+    <EditText
+        android:id="@+id/ptYear"
+        android:layout_width="99dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Year"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/ptWeb"
+        app:layout_constraintTop_toTopOf="@+id/ptMonth" />
+
+    <EditText
+        android:id="@+id/ptMonth"
+        android:layout_width="87dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Month"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/ptWeb"
+        app:layout_constraintStart_toStartOf="@+id/ptWeb" />
+
+    <EditText
+        android:id="@+id/ptDay"
+        android:layout_width="83dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Day"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/ptMonth"
+        app:layout_constraintStart_toStartOf="@+id/ptMonth" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

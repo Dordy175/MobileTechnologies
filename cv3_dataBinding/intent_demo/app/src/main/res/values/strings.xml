@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">intent_demo</string>
+    <string name="btnCall">Call</string>
+    <string name="adressHint">Address to show on map</string>
+</resources>

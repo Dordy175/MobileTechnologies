@@ -1,0 +1,4 @@
+#Thu Oct 29 11:35:55 CET 2020
+base.0=D\:\\Ing\\MobilniTechnologie\\cv4_lifecycle\\DessertClickerLogs\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
