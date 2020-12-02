@@ -17,7 +17,6 @@
     <!--   a secondary color for controls like checkboxes and text fields -->
     <color name="colorAccent">#FF4081</color>
 
+    <color name="buttonLabel">#FFFFFF</color>
 
-    colorPrimaryDark
-    colorAccent
 </resources>
