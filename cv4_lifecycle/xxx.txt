@@ -1,5 +1,0 @@
-https://codelabs.developers.google.com/codelabs/kotlin-android-training-complex-lifecycle/index.html?index=..%2F..android-kotlin-fundamentals#0
-
-1. Tutorial desserrtClicker
-
-2. DiceRoller after adb kill show right values
