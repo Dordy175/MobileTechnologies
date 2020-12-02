@@ -1,2 +1,2 @@
-# taskListApp
- Android Codelabs Tutorial - Android DataStore and Proto DataStore codelab supporting code
+# School projects
+ Apps done by following Android Codelabs Tutorials and task assignments
