@@ -102,9 +102,9 @@ class UserPreferencesRepository private constructor(context: Context) {
         }
     }
 
-    suspend fun updateCounter(counter: Int) {
+    suspend fun updateCounter() {
         dataStore.updateData { preferences ->
-            preferences.toBuilder().setCounter(counter).build()
+            preferences.toBuilder().setCounter(preferences.counter+1).build()
         }
     }
 

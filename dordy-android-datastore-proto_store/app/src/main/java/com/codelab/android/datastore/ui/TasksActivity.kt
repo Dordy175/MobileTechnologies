@@ -52,8 +52,7 @@ class TasksActivity : AppCompatActivity() {
         setupRecyclerView()
         setupFilterListeners(viewModel)
         setupSort()
-        addOneToCounter(viewModel)
-
+        viewModel.incrementCounter()
        var ctrValue: Int = binding.etCtr.text.toString().toInt()
 
 
@@ -62,33 +61,14 @@ class TasksActivity : AppCompatActivity() {
             adapter.submitList(tasksUiModel.tasks)
             updateSort(tasksUiModel.sortOrder)
             binding.showCompletedSwitch.isChecked = tasksUiModel.showCompleted
-          //  binding.etCtr.text = tasksUiModel.counter
-
+          // binding.etCtr.text = tasksUiModel.counter
+            binding.etCtr.text = tasksUiModel.counter.toString()
         }
     }
 
 
 
-    private fun addOneToCounter(viewModel: TasksViewModel){
-    
 
-        // co pouzit misto onCheckedChange, pro tuhle situaci?
-        var tmp: Int = binding.etCtr.text.toString().toInt()
-        if(tmp == 0){
-            tmp = 1
-            viewModel.showCounter(tmp)
-        }else{
-            tmp += 1
-            viewModel.showCounter(tmp)
-        }
-
-
-        binding.etCtr.text = tmp.toString()
-       // binding.etCtr.text = viewModel.showCounter(tmp).toString()
-
-
-
-    }
 
 
     private fun setupFilterListeners(viewModel: TasksViewModel) {
