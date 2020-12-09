@@ -1,4 +1,4 @@
-MarsRealEstate - Starter Code
+MarsRealEstate - My completed code
 ==============================
 
 Starter code for Android Kotlin Fundamentals Codelab 8.1 Getting data from the internet
