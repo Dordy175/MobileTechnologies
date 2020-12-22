@@ -26,6 +26,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.android.devbyteviewer.domain.DevByteVideo
 import com.example.android.devbyteviewer.network.DevByteNetwork
 import com.example.android.devbyteviewer.network.asDomainModel
+
 import kotlinx.coroutines.*
 import java.io.IOException
 
@@ -40,6 +41,8 @@ import java.io.IOException
  * or fragment lifecycle events.
  */
 class DevByteViewModel(application: Application) : AndroidViewModel(application) {
+
+
 
     /**
      * A playlist of videos that can be shown on the screen. This is private to avoid exposing a
@@ -103,6 +106,10 @@ class DevByteViewModel(application: Application) : AndroidViewModel(application)
             _isNetworkErrorShown.value = false
 
         } catch (networkError: IOException) {
+
+           //sim delay
+            delay(2000)
+
             // Show a Toast error message and hide the progress bar.
             _eventNetworkError.value = true
         }
