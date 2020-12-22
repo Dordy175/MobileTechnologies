@@ -46,40 +46,41 @@
 35-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:29:9-54
 36        android:supportsRtl="true"
 36-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:30:9-35
-37        android:theme="@style/AppTheme" >
-37-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:31:9-40
-38        <activity android:name="com.example.android.devbyteviewer.ui.DevByteActivity" >
-38-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:33:9-39:20
-38-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:33:19-53
-39            <intent-filter>
-39-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:34:13-38:29
-40                <action android:name="android.intent.action.MAIN" />
-40-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:35:17-69
-40-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:35:25-66
-41
-42                <category android:name="android.intent.category.LAUNCHER" />
-42-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:37:17-77
-42-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:37:27-74
-43            </intent-filter>
-44        </activity>
-45
-46        <service
-46-->[androidx.room:room-runtime:2.1.0-alpha06] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\1997c0c7dadc05e4d218839f13e6ea5c\room-runtime-2.1.0-alpha06\AndroidManifest.xml:23:9-25:40
-47            android:name="androidx.room.MultiInstanceInvalidationService"
-47-->[androidx.room:room-runtime:2.1.0-alpha06] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\1997c0c7dadc05e4d218839f13e6ea5c\room-runtime-2.1.0-alpha06\AndroidManifest.xml:24:13-74
-48            android:exported="false" />
-48-->[androidx.room:room-runtime:2.1.0-alpha06] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\1997c0c7dadc05e4d218839f13e6ea5c\room-runtime-2.1.0-alpha06\AndroidManifest.xml:25:13-37
-49
-50        <provider
-50-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-51            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-51-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-52            android:authorities="com.example.android.devbyteviewer.lifecycle-process"
-52-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-53            android:exported="false"
-53-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-54            android:multiprocess="true" />
-54-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-55    </application>
-56
-57</manifest>
+37        android:testOnly="true"
+38        android:theme="@style/AppTheme" >
+38-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:31:9-40
+39        <activity android:name="com.example.android.devbyteviewer.ui.DevByteActivity" >
+39-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:33:9-39:20
+39-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:33:19-53
+40            <intent-filter>
+40-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:34:13-38:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:35:17-69
+41-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:35:25-66
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:37:17-77
+43-->D:\Ing\MobilniTechnologie\taskListApp\taskListApp\DevBytes-starter\app\src\main\AndroidManifest.xml:37:27-74
+44            </intent-filter>
+45        </activity>
+46
+47        <service
+47-->[androidx.room:room-runtime:2.1.0-alpha06] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\1997c0c7dadc05e4d218839f13e6ea5c\room-runtime-2.1.0-alpha06\AndroidManifest.xml:23:9-25:40
+48            android:name="androidx.room.MultiInstanceInvalidationService"
+48-->[androidx.room:room-runtime:2.1.0-alpha06] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\1997c0c7dadc05e4d218839f13e6ea5c\room-runtime-2.1.0-alpha06\AndroidManifest.xml:24:13-74
+49            android:exported="false" />
+49-->[androidx.room:room-runtime:2.1.0-alpha06] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\1997c0c7dadc05e4d218839f13e6ea5c\room-runtime-2.1.0-alpha06\AndroidManifest.xml:25:13-37
+50
+51        <provider
+51-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+52            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+52-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+53            android:authorities="com.example.android.devbyteviewer.lifecycle-process"
+53-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+54            android:exported="false"
+54-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+55            android:multiprocess="true" />
+55-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\ladis\.gradle\caches\transforms-2\files-2.1\fbf646b3ac46620e2668c79e73c5afde\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+56    </application>
+57
+58</manifest>
